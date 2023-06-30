@@ -1,5 +1,6 @@
 ﻿using DesignPatterns2.Capitulo01;
 using DesignPatterns2.Capitulo02;
+using DesignPatterns2.Capitulo03;
 using System.Data;
 
 IDbConnection conexao = new ConnectionFactory().GetConnection();
@@ -20,3 +21,16 @@ IList<INota> musica = new List<INota>()
 
 Piano piano = new Piano();
 piano.Toca(musica);
+
+Historico historico = new Historico();
+
+Contrato contrato = new Contrato(DateTime.Now, "Leo", TipoContrato.Novo);
+historico.Adiciona(contrato.SalvaEstado());
+
+contrato.Avanca();
+historico.Adiciona(contrato.SalvaEstado());
+
+contrato.Avanca();
+historico.Adiciona(contrato.SalvaEstado());
+
+Console.WriteLine(historico.Pega(2).Contrato.Tipo);
