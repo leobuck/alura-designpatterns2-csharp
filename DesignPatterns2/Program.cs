@@ -46,3 +46,9 @@ Console.WriteLine(soma.Avalia());
 Expression somaExp = Expression.Add(Expression.Constant(10), Expression.Constant(100));
 Func<int> funcao = Expression.Lambda<Func<int>>(somaExp).Compile();
 Console.WriteLine(funcao());
+
+IExpressao esquerda2 = new Multiplicacao(new Numero(2), new Numero(5));
+IExpressao direita2 = new Divisao(new Numero(10), new Numero(5));
+IExpressao soma2 = new Soma(esquerda2, direita2);
+
+Console.WriteLine(soma2.Avalia());
