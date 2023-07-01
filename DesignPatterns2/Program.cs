@@ -52,3 +52,6 @@ IExpressao direita2 = new Divisao(new Numero(10), new Numero(5));
 IExpressao soma2 = new Soma(esquerda2, direita2);
 
 Console.WriteLine(soma2.Avalia());
+
+IExpressao raizQuadrada = new RaizQuadrada(new Numero(9));
+Console.WriteLine(raizQuadrada.Avalia());
