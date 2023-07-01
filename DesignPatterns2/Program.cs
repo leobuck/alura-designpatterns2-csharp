@@ -1,7 +1,9 @@
 ﻿using DesignPatterns2.Capitulo01;
 using DesignPatterns2.Capitulo02;
 using DesignPatterns2.Capitulo03;
+using DesignPatterns2.Capitulo04;
 using System.Data;
+using System.Linq.Expressions;
 
 IDbConnection conexao = new ConnectionFactory().GetConnection();
 IDbCommand comando =  conexao.CreateCommand();
@@ -34,3 +36,13 @@ contrato.Avanca();
 historico.Adiciona(contrato.SalvaEstado());
 
 Console.WriteLine(historico.Pega(2).Contrato.Tipo);
+
+IExpressao esquerda = new Soma(new Numero(1), new Numero(10));
+IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
+IExpressao soma = new Soma(esquerda, direita);
+
+Console.WriteLine(soma.Avalia());
+
+Expression somaExp = Expression.Add(Expression.Constant(10), Expression.Constant(100));
+Func<int> funcao = Expression.Lambda<Func<int>>(somaExp).Compile();
+Console.WriteLine(funcao());
