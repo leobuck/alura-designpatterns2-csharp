@@ -3,6 +3,7 @@ using DesignPatterns2.Capitulo02;
 using DesignPatterns2.Capitulo03;
 using DesignPatterns2.Capitulo04;
 using DesignPatterns2.Capitulo05;
+using DesignPatterns2.Capitulo06;
 using System.Data;
 using System.Linq.Expressions;
 
@@ -75,3 +76,10 @@ soma2.Aceita(preFixo);
 
 Console.WriteLine();
 raizQuadrada.Aceita(preFixo);
+
+Console.WriteLine();
+
+IMensagem mensagem = new MensagemCliente("Leo");
+IEnviador enviador = new EnviaPorSms();
+mensagem.Enviador = enviador;
+mensagem.Envia();
