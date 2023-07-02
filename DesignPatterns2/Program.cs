@@ -2,6 +2,7 @@
 using DesignPatterns2.Capitulo02;
 using DesignPatterns2.Capitulo03;
 using DesignPatterns2.Capitulo04;
+using DesignPatterns2.Capitulo05;
 using System.Data;
 using System.Linq.Expressions;
 
@@ -55,3 +56,12 @@ Console.WriteLine(soma2.Avalia());
 
 IExpressao raizQuadrada = new RaizQuadrada(new Numero(9));
 Console.WriteLine(raizQuadrada.Avalia());
+
+ImpressoraVisitor impressora = new ImpressoraVisitor();
+soma.Aceita(impressora);
+
+Console.WriteLine();
+soma2.Aceita(impressora);
+
+Console.WriteLine();
+raizQuadrada.Aceita(impressora);

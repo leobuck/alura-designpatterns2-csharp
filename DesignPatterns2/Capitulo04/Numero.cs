@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns2.Capitulo05;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,20 @@ namespace DesignPatterns2.Capitulo04;
 
 public class Numero : IExpressao
 {
-    private int numero;
+    public int Valor { get; private set; }
 
     public Numero(int numero)
     {
-        this.numero = numero;
+        Valor = numero;
     }
 
     public int Avalia()
     {
-        return numero;
+        return Valor;
+    }
+
+    public void Aceita(IVisitor impressora)
+    {
+        impressora.ImprimeNumero(this);
     }
 }

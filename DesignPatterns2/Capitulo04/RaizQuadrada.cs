@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns2.Capitulo05;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,21 @@ namespace DesignPatterns2.Capitulo04;
 
 public class RaizQuadrada : IExpressao
 {
-    private IExpressao radicando;
+    public IExpressao Radicando { get; private set; }
 
     public RaizQuadrada(IExpressao radicando)
     {
-        this.radicando = radicando;
+        Radicando = radicando;
+    }
+
+    public void Aceita(IVisitor impressora)
+    {
+        impressora.ImprimeRaizQuadrada(this);
     }
 
     public int Avalia()
     {
-        int valorRadicando = radicando.Avalia();
+        int valorRadicando = Radicando.Avalia();
         return (int)Math.Sqrt(valorRadicando);
     }
 }
