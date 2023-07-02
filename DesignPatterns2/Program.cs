@@ -65,3 +65,13 @@ soma2.Aceita(impressora);
 
 Console.WriteLine();
 raizQuadrada.Aceita(impressora);
+
+ImpressoraPreFixoVisitor preFixo = new ImpressoraPreFixoVisitor();
+Console.WriteLine();
+soma.Aceita(preFixo);
+
+Console.WriteLine();
+soma2.Aceita(preFixo);
+
+Console.WriteLine();
+raizQuadrada.Aceita(preFixo);
