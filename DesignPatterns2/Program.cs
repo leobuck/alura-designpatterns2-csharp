@@ -4,6 +4,7 @@ using DesignPatterns2.Capitulo03;
 using DesignPatterns2.Capitulo04;
 using DesignPatterns2.Capitulo05;
 using DesignPatterns2.Capitulo06;
+using DesignPatterns2.Capitulo07;
 using System.Data;
 using System.Linq.Expressions;
 
@@ -83,3 +84,15 @@ IMensagem mensagem = new MensagemCliente("Leo");
 IEnviador enviador = new EnviaPorSms();
 mensagem.Enviador = enviador;
 mensagem.Envia();
+
+FilaDeTrabalho fila = new FilaDeTrabalho();
+
+Pedido pedido1 = new Pedido("Leo", 100.0);
+Pedido pedido2 = new Pedido("Ana", 200.0);
+
+fila.Adiciona(new PagaPedido(pedido1));
+fila.Adiciona(new PagaPedido(pedido2));
+
+fila.Adiciona(new FinalizaPedido(pedido1));
+
+fila.Processa();
