@@ -5,6 +5,7 @@ using DesignPatterns2.Capitulo04;
 using DesignPatterns2.Capitulo05;
 using DesignPatterns2.Capitulo06;
 using DesignPatterns2.Capitulo07;
+using DesignPatterns2.Capitulo08;
 using System.Data;
 using System.Linq.Expressions;
 
@@ -96,3 +97,11 @@ fila.Adiciona(new PagaPedido(pedido2));
 fila.Adiciona(new FinalizaPedido(pedido1));
 
 fila.Processa();
+
+Cliente cliente = new Cliente();
+cliente.Nome = "Leo";
+cliente.Endereco = "Rua das Flores";
+cliente.DataNascimento = DateTime.Now;
+
+string xml = new GeradorDeXml().GeraXml(cliente);
+Console.WriteLine(xml);
