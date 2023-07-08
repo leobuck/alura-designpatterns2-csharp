@@ -6,6 +6,7 @@ using DesignPatterns2.Capitulo05;
 using DesignPatterns2.Capitulo06;
 using DesignPatterns2.Capitulo07;
 using DesignPatterns2.Capitulo08;
+using DesignPatterns2.Capitulo09;
 using System.Data;
 using System.Linq.Expressions;
 
@@ -105,3 +106,15 @@ cliente.DataNascimento = DateTime.Now;
 
 string xml = new GeradorDeXml().GeraXml(cliente);
 Console.WriteLine(xml);
+
+string cpf = "12345678900";
+
+EmpresaFacade facade = new EmpresaFacadeSingleton().Instancia;
+
+Cliente clienteBusca = facade.BuscaCliente(cpf);
+
+Fatura fatura = facade.CriaFatura(clienteBusca, 5000);
+
+Cobranca cobranca = facade.GeraCobranca(TipoCobranca.Boleto, fatura);
+
+ContatoCliente contato = facade.FazContato(clienteBusca, cobranca);
